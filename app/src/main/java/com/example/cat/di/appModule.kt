@@ -6,6 +6,7 @@ import com.example.cat.data.remote.interceptor.RequestInterceptor
 import com.example.cat.domain.CatRepository
 import com.example.cat.domain.usecase.GetCatsUseCase
 import com.example.cat.domain.usecase.UseCase
+import com.example.cat.ui.presentation.detail.DetailViewmodel
 import com.example.cat.ui.presentation.home.HomeViewmodel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -24,6 +25,7 @@ val appModule = module {
     singleOf(::CatRepositoryImp) { bind<CatRepository>() }
     single { provideCases(get()) }
     viewModelOf(::HomeViewmodel)
+    viewModelOf(::DetailViewmodel)
 
 }
 

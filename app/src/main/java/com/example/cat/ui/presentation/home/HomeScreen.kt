@@ -24,26 +24,24 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.lifecycleScope
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.cat.ui.component.imageOption
 import com.example.cat.ui.component.shimmerPluginImage
 import com.skydoves.landscapist.coil3.CoilImage
-import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
 fun HomeScreen(
     viewModel: HomeViewmodel = koinViewModel(),
-    gotoDetail: () -> Unit
+    gotoDetail: (String) -> Unit
 ) {
 
 
     LaunchedEffect(true) {
         viewModel.effect.collect {
             when (it) {
-                HomeContract.Effect.GoToDetail -> gotoDetail()
+                is HomeContract.Effect.GoToDetail -> gotoDetail(it.id)
             }
         }
     }
@@ -84,7 +82,7 @@ fun HomeScreen(
                                         .background(Color.White)
                                         .clip(RoundedCornerShape(20.dp))
                                         .clickable {
-                                            viewModel.setEvent(HomeContract.Event.OnGoToDetail)
+                                            viewModel.setEvent(HomeContract.Event.OnGoToDetail(state.catList?.itemSnapshotList[index]?.id.toString()))
                                         }) {
                                     Column {
                                         CoilImage(

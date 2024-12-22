@@ -5,6 +5,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.example.cat.ui.navigation.INavigation
+import com.example.cat.ui.presentation.detail.DetailNavigation
 
 class HomeNavigation : INavigation {
     override val route = "HomeNavigation"
@@ -15,7 +16,9 @@ fun NavGraphBuilder.homeScreen(
 ) {
     composable(route = HomeNavigation().route) {
         HomeScreen{
-//            navController.navigate()
+            navController.navigate(DetailNavigation().routeWithArgs(
+                DetailNavigation.ID_CAT to it
+            ))
         }
     }
 
