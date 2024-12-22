@@ -2,6 +2,7 @@ package com.example.cat.data.remote
 
 import com.example.cat.data.remote.dto.CatDto
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -16,6 +17,11 @@ interface ApiService {
         @Query("page") page: Int,
         @Query("limit") limit: Int = 10,
     ): List<CatDto>
+
+    @GET("images/{image_id}")
+    suspend fun getCatDetail(
+        @Path("image_id") imageId: String,
+    ): CatDto
 
 
 }

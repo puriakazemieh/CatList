@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.example.cat.ui.component.ProgressScreen
 import com.example.cat.ui.component.imageOption
 import com.example.cat.ui.component.shimmerPluginImage
 import com.skydoves.landscapist.coil3.CoilImage
@@ -54,7 +55,6 @@ fun HomeScreen(
     val catList = viewModel.catResult.collectAsLazyPagingItems()
     viewModel.setEvent(HomeContract.Event.OnCollectCatList(catList))
 
-    val strokeWidth = 5.dp
     Scaffold { paddingValue ->
         Box(modifier = Modifier.padding(paddingValue)) {
 
@@ -107,28 +107,7 @@ fun HomeScreen(
 
                     }
 
-                    state.isLoading -> {
-                        Box(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .background(Color.White)
-                        ) {
-                            CircularProgressIndicator(
-                                modifier = Modifier
-                                    .drawBehind {
-                                        drawCircle(
-                                            Color.Red,
-                                            radius = size.width / 2 - strokeWidth.toPx() / 2,
-                                            style = Stroke(strokeWidth.toPx())
-                                        )
-
-                                    }
-                                    .align(Alignment.Center),
-                                color = Color.LightGray,
-                                strokeWidth = strokeWidth
-                            )
-                        }
-                    }
+                    state.isLoading -> ProgressScreen()
 
                 }
             }

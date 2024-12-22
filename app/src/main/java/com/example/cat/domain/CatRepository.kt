@@ -7,4 +7,6 @@ import kotlinx.coroutines.flow.Flow
 interface CatRepository {
 
     suspend fun getCats(): Flow<PagingData<Cat>>
+
+    suspend fun getCatDetail(imageId: String): Flow<Cat>
 }

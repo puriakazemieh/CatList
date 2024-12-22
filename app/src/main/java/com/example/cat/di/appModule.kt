@@ -4,6 +4,7 @@ import com.example.cat.data.CatRepositoryImp
 import com.example.cat.data.remote.ApiService
 import com.example.cat.data.remote.interceptor.RequestInterceptor
 import com.example.cat.domain.CatRepository
+import com.example.cat.domain.usecase.GetCatDetailUseCase
 import com.example.cat.domain.usecase.GetCatsUseCase
 import com.example.cat.domain.usecase.UseCase
 import com.example.cat.ui.presentation.detail.DetailViewmodel
@@ -62,6 +63,7 @@ fun provideCases(
     repository: CatRepository,
 ): UseCase {
     return UseCase(
-        getCatsUseCase = GetCatsUseCase(repository)
+        getCatsUseCase = GetCatsUseCase(repository),
+        getCatDetailUseCase = GetCatDetailUseCase(repository),
     )
 }

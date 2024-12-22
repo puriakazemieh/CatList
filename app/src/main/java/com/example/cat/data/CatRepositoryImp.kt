@@ -10,6 +10,7 @@ import com.example.cat.domain.CatRepository
 import com.example.cat.domain.mapper.toCat
 import com.example.cat.domain.model.Cat
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
 class CatRepositoryImp(private val apiService: ApiService) : CatRepository {
@@ -20,6 +21,13 @@ class CatRepositoryImp(private val apiService: ApiService) : CatRepository {
             CatPagingSource(apiService)
         }
     ).flow.map { it.map { it.toCat() } }
+
+    override suspend fun getCatDetail(imageId: String): Flow<Cat> {
+        return flow {
+            val api = apiService.getCatDetail(imageId)
+            emit(api.toCat())
+        }
+    }
 
 
 }
