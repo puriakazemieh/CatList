@@ -6,7 +6,7 @@ import com.example.cat.data.remote.interceptor.RequestInterceptor
 import com.example.cat.domain.CatRepository
 import com.example.cat.domain.usecase.GetCatsUseCase
 import com.example.cat.domain.usecase.UseCase
-import com.example.cat.presentation.home.HomeViewmodel
+import com.example.cat.ui.presentation.home.HomeViewmodel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModelOf
