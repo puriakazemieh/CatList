@@ -30,7 +30,7 @@ class HomeViewmodel(
         when (event) {
             is HomeContract.Event.OnCollectCatList -> collectCatList(event.catList)
             HomeContract.Event.GetCats -> getCats()
-
+            HomeContract.Event.OnGoToDetail -> setEffect { HomeContract.Effect.GoToDetail }
         }
     }
 

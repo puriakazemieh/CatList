@@ -10,6 +10,7 @@ class HomeContract {
 
     sealed class Event : UiEvent {
         object GetCats : Event()
+        object OnGoToDetail : Event()
         data class OnCollectCatList(var catList: LazyPagingItems<Cat>) : Event()
     }
 
@@ -25,8 +26,6 @@ class HomeContract {
     }
 
     sealed class Effect : UiEffect {
-
-        object ShowToast : Effect()
-
+        object GoToDetail : Effect()
     }
 }
