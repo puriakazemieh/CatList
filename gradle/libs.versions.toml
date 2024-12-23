@@ -19,7 +19,8 @@ pagingCompose = "3.3.5"
 retrofit = "2.11.0"
 logging-interceptor = "4.12.0"
 gson = "2.10.1"
-ksp-version = "1.9.24-1.0.20"
+ksp-version = "2.0.0-1.0.22"
+roomRuntime = "2.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -41,6 +42,11 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+
+#database
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
 
 #koin
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }

@@ -12,6 +12,7 @@ class HomeContract {
         object GetCats : Event()
         data class OnGoToDetail(val id: String) : Event()
         data class OnCollectCatList(var catList: LazyPagingItems<Cat>) : Event()
+        data class  OnFavClicked(val id: String)  : Event()
     }
 
     data class State(

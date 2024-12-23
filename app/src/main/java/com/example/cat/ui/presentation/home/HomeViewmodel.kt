@@ -4,9 +4,12 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.compose.LazyPagingItems
+import androidx.paging.map
 import com.example.cat.domain.model.Cat
 import com.example.cat.domain.usecase.UseCase
 import com.example.cat.ui.presentation.base.BaseViewModel
+import com.example.cat.ui.presentation.home.HomeContract.Effect.*
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -30,7 +33,8 @@ class HomeViewmodel(
         when (event) {
             is HomeContract.Event.OnCollectCatList -> collectCatList(event.catList)
             HomeContract.Event.GetCats -> getCats()
-            is HomeContract.Event.OnGoToDetail -> setEffect { HomeContract.Effect.GoToDetail(event.id) }
+            is HomeContract.Event.OnGoToDetail -> setEffect { GoToDetail(event.id) }
+           is HomeContract.Event.OnFavClicked -> onFavClicked(event.id)
         }
     }
 
@@ -46,6 +50,20 @@ class HomeViewmodel(
     private fun collectCatList(eventCatList: LazyPagingItems<Cat>) {
         viewModelScope.launch {
             setState { copy(catList = eventCatList, isLoading = false) }
+        }
+    }
+
+    private fun onFavClicked(id: String) {
+        viewModelScope.launch {
+            useCase.setFavUseCase(id).collect {
+                _catResult.emit(
+                    _catResult.value.map {
+                        if (it.id == id)
+                            it.copy(isCatFav = true)
+                        else it
+                    }
+                )
+            }
         }
     }
 }

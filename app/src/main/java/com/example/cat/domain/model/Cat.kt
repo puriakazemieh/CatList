@@ -5,5 +5,6 @@ data class Cat(
     val id: String? = null,
     val imageUrl: String? = null,
     val breeds: List<BreedsItem>? = null,
-    val height: Int? = null
+    val height: Int? = null,
+    val isCatFav: Boolean =false
 )

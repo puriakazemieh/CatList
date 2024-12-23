@@ -7,13 +7,14 @@ import com.example.cat.domain.model.BreedsItem
 import com.example.cat.domain.model.Cat
 import com.example.cat.domain.model.Weight
 
-fun CatDto.toCat() =
+fun CatDto.toCat(isCatFav: Boolean) =
     Cat(
         width = width,
         id = id,
         imageUrl = url,
         breeds = breeds?.map { it.toBreedsItem() },
-        height = height
+        height = height,
+        isCatFav = isCatFav
     )
 
 

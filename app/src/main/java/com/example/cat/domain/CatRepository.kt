@@ -9,4 +9,6 @@ interface CatRepository {
     suspend fun getCats(): Flow<PagingData<Cat>>
 
     suspend fun getCatDetail(imageId: String): Flow<Cat>
+
+    suspend fun setFav(id: String) : Flow<Boolean>
 }
