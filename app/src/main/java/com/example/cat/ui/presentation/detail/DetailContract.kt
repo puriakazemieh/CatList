@@ -4,13 +4,12 @@ import com.example.cat.domain.model.Cat
 import com.example.cat.ui.presentation.base.UiEffect
 import com.example.cat.ui.presentation.base.UiEvent
 import com.example.cat.ui.presentation.base.UiState
+import com.example.cat.ui.presentation.home.HomeContract.Event
 
 class DetailContract {
 
     sealed class Event : UiEvent {
-        object GetCatDetail : Event()
-        object NavigateBack : Event()
-        data class OnCollectCatDetail(var cat: Cat) : Event()
+        data class  OnFavClicked(val id: String)  : Event()
     }
 
     data class State(

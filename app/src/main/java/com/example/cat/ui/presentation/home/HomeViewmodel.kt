@@ -55,11 +55,11 @@ class HomeViewmodel(
 
     private fun onFavClicked(id: String) {
         viewModelScope.launch {
-            useCase.setFavUseCase(id).collect {
+            useCase.setFavUseCase(id).collect {isFav->
                 _catResult.emit(
                     _catResult.value.map {
                         if (it.id == id)
-                            it.copy(isCatFav = true)
+                            it.copy(isCatFav = isFav)
                         else it
                     }
                 )
