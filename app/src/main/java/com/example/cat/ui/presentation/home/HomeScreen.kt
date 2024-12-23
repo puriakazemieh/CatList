@@ -17,7 +17,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -27,11 +26,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.cat.ui.component.ProgressScreen
 import com.example.cat.ui.component.imageOption
@@ -66,7 +64,6 @@ fun HomeScreen(
     Scaffold { paddingValue ->
         Box(modifier = Modifier.padding(paddingValue)) {
 
-
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -74,70 +71,81 @@ fun HomeScreen(
             ) {
                 when {
                     state.catList?.itemCount != 0 -> {
-                        LazyVerticalGrid(
+                        Box(
                             modifier = Modifier
                                 .fillMaxSize()
                                 .padding(horizontal = 8.dp),
-                            columns = GridCells.Fixed(2),
                         ) {
-                            items(
-                                state.catList?.itemCount ?: 0
-                            ) { index ->
-                                Box(
-                                    modifier = Modifier
-                                        .fillMaxSize()
-                                        .padding(vertical = 8.dp, horizontal = 4.dp)
-                                        .background(Color.White)
-                                        .clip(RoundedCornerShape(20.dp))
-                                        .clickable {
-                                            viewModel.setEvent(
-                                                HomeContract.Event.OnGoToDetail(
-                                                    state.catList?.get(
-                                                        index
-                                                    )?.id.toString()
+                            LazyVerticalGrid(
+                                columns = GridCells.Fixed(2),
+                            ) {
+                                items(
+                                    state.catList?.itemCount ?: 0
+                                ) { index ->
+                                    Box(
+                                        modifier = Modifier
+                                            .fillMaxSize()
+                                            .padding(vertical = 8.dp, horizontal = 4.dp)
+                                            .background(Color.White)
+                                            .clip(RoundedCornerShape(20.dp))
+                                            .clickable {
+                                                viewModel.setEvent(
+                                                    HomeContract.Event.OnGoToDetail(
+                                                        state.catList?.get(
+                                                            index
+                                                        )?.id.toString()
+                                                    )
                                                 )
-                                            )
-                                        }) {
-                                    Column {
-                                        CoilImage(
-                                            modifier = Modifier
-                                                .fillMaxWidth()
-                                                .height(200.dp)
-                                                .clip(RoundedCornerShape(10.dp)),
-                                            imageModel = { state.catList?.get(index)?.imageUrl },
-                                            imageOptions = imageOption(),
-                                            component = shimmerPluginImage(),
-                                        )
-                                        Row(
-                                            modifier = Modifier
-                                                .fillMaxWidth()
-                                                .padding(4.dp),
-                                            verticalAlignment = Alignment.CenterVertically,
-                                            horizontalArrangement = Arrangement.Absolute.SpaceBetween
-                                        ) {
-                                            state.catList?.get(index)?.breeds?.firstOrNull()?.name?.let {
-                                                Text(it)
-                                            }
-                                            Icon(
-                                                if (state.catList?.get(index)?.isCatFav == true)
-                                                    Icons.Default.Favorite
-                                                else Icons.Default.FavoriteBorder, null,
+                                            }) {
+                                        Column {
+                                            CoilImage(
                                                 modifier = Modifier
-                                                    .clickable(
-                                                        indication = null,
-                                                        interactionSource = remember { MutableInteractionSource() }
-                                                    ) {
-                                                        viewModel.setEvent(HomeContract.Event.OnFavClicked(
-                                                            state.catList?.get(index)?.id.toString()
-                                                        ))
-                                                    }
+                                                    .fillMaxWidth()
+                                                    .height(200.dp)
+                                                    .clip(RoundedCornerShape(10.dp)),
+                                                imageModel = { state.catList?.get(index)?.imageUrl },
+                                                imageOptions = imageOption(),
+                                                component = shimmerPluginImage(),
                                             )
+                                            Row(
+                                                modifier = Modifier
+                                                    .fillMaxWidth()
+                                                    .padding(4.dp),
+                                                verticalAlignment = Alignment.CenterVertically,
+                                                horizontalArrangement = Arrangement.Absolute.SpaceBetween
+                                            ) {
+                                                state.catList?.get(index)?.breeds?.firstOrNull()?.name?.let {
+                                                    Text(it)
+                                                }
+                                                Icon(
+                                                    if (state.catList?.get(index)?.isCatFav == true)
+                                                        Icons.Default.Favorite
+                                                    else Icons.Default.FavoriteBorder, null,
+                                                    modifier = Modifier
+                                                        .clickable(
+                                                            indication = null,
+                                                            interactionSource = remember { MutableInteractionSource() }
+                                                        ) {
+                                                            viewModel.setEvent(
+                                                                HomeContract.Event.OnFavClicked(
+                                                                    state.catList?.get(index)?.id.toString()
+                                                                )
+                                                            )
+                                                        }
+                                                )
+
+                                            }
 
                                         }
-
                                     }
                                 }
                             }
+                            if (state.catList?.loadState?.append is LoadState.Loading) ProgressScreen(
+                                Modifier
+                                    .fillMaxWidth()
+                                    .align(Alignment.BottomCenter)
+                            )
+
                         }
 
                     }

@@ -13,13 +13,15 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ProgressScreen() {
+fun ProgressScreen(
+    modifier: Modifier = Modifier
+        .fillMaxSize()
+        .background(Color.White)
+) {
 
     val strokeWidth = 5.dp
     Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White)
+        modifier = modifier
     ) {
         CircularProgressIndicator(
             modifier = Modifier
