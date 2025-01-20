@@ -1,18 +1,17 @@
-package com.example.cat
+package com.example.cat.ui.presentation.home
 
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.onAllNodesWithText
+import androidx.compose.ui.test.onFirst
 import androidx.compose.ui.test.performClick
 import androidx.navigation.compose.ComposeNavigator
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.example.cat.ui.presentation.home.HomeNavigation
+import com.example.cat.ui.navigation.AppNavigation
+import com.example.cat.ui.presentation.detail.DetailNavigation
 import junit.framework.TestCase.assertEquals
+import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -36,7 +35,7 @@ class HomeNavigationTest {
     }
 
     @Test
-    fun `homeNavigationrouteshouldbecorrect`() {
+    fun homeNavigationRouteShouldBeCorrect() {
         // Arrange
         val homeNavigation = HomeNavigation()
 
@@ -47,29 +46,27 @@ class HomeNavigationTest {
         assertEquals("HomeNavigation", route)
     }
 
+
     @Test
-    fun testNavigation() {
+    fun navigatesToDetailOnItemClick() = runBlocking {
+        // Arrange
         composeTestRule.setContent {
-
-            NavHost(
-                navController = testNavController,
-                startDestination = "homeScreen"
-            ) {
-                composable("homeScreen") {
-                    Button(onClick = {
-                        testNavController.navigate("detailScreen")
-                    }) {
-                        Text("Go to Detail")
-                    }
-                }
-
-                composable("detailScreen") {
-
-                }
-            }
+            AppNavigation(testNavController)
+            testNavController.navigate(HomeNavigation().route)
         }
 
-        composeTestRule.onNodeWithText("Go to Detail").performClick()
-        assertEquals("detailScreen", testNavController.currentBackStackEntry?.destination?.route)
+        // Act
+        composeTestRule.waitUntil(10000) {
+            composeTestRule.onAllNodesWithText("Abyssinian").fetchSemanticsNodes().isNotEmpty()
+        }
+
+        composeTestRule.onAllNodesWithText("Abyssinian")
+            .onFirst()
+            .performClick()
+
+        // Assert
+        val expectedRoute = DetailNavigation().routeWithArgs(DetailNavigation.ID_CAT to "abys")
+        assertEquals("DetailNavigation?abys", expectedRoute)
     }
+
 }

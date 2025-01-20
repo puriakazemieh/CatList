@@ -39,7 +39,12 @@ android {
         compose = true
     }
     testOptions {
-        unitTests.all { it.useJUnitPlatform() }
+        unitTests.all {
+            it.useJUnitPlatform()
+        }
+        unitTests {
+            isIncludeAndroidResources= true
+        }
     }
     packagingOptions {
         resources.excludes.add("META-INF/*")
@@ -71,10 +76,9 @@ dependencies {
     implementation(libs.logging.interceptor)
 
     // Koin
-    implementation (libs.koin.android)
-    implementation (libs.koin.androidx.compose)
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
+//    implementation( "io.insert-koin:koin-android:3.4.0")
 
     // Paging 3
     implementation(libs.androidx.paging.runtime)
@@ -110,6 +114,10 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4.v151)
     debugImplementation(libs.ui.test.manifest)
     androidTestImplementation(libs.androidx.navigation.testing)
+    androidTestImplementation (libs.junit)
+    androidTestImplementation (libs.androidx.junit)
+    androidTestImplementation (libs.androidx.espresso.core)
+
 
 
 }

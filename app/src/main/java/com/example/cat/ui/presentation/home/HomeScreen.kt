@@ -120,7 +120,8 @@ fun HomeScreen(
                                                 Icon(
                                                     if (state.catList?.get(index)?.isCatFav == true)
                                                         Icons.Default.Favorite
-                                                    else Icons.Default.FavoriteBorder, null,
+                                                    else Icons.Default.FavoriteBorder,
+                                                    contentDescription= "Favorite Icon",
                                                     modifier = Modifier
                                                         .clickable(
                                                             indication = null,
