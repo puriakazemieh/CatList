@@ -27,6 +27,7 @@ import kotlinx.coroutines.test.setMain
 import org.junit.Assert.assertThrows
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -209,6 +210,41 @@ class CatRepositoryImplTest {
         assertEquals(1, result.size)
         assertEquals(false, result[0].isCatFav)
     }
+
+    @Test
+    fun `setFav should toggle favorite status and return updated status`() = runTest {
+        // Arrange
+        val catEntity = CatEntity(id = "1", isFav = false)
+        coEvery { mockCatDao.getFavCat("1") } returns catEntity
+        coEvery { mockCatDao.insertCAt(any()) } returns Unit
+
+        // Act
+        val result = repository.setFav("1").toList()
+
+        // Assert
+        assertEquals(1, result.size)
+        assertEquals(true, result[0]) // Ensure the favorite status is toggled
+    }
+
+    @Test
+    fun `setFav should throw exception when database call fails`() = runTest {
+        // Arrange
+        val exception = Exception("Database call failed")
+        coEvery { mockCatDao.getFavCat("1") } throws exception
+
+        // Act & Assert
+        val result = try {
+            repository.setFav("1").toList()
+            null
+        } catch (e: Exception) {
+            e
+        }
+
+        // Assert
+        assertNotNull(result)
+        assertEquals("Database call failed", result?.message)
+    }
+
 
 }
 

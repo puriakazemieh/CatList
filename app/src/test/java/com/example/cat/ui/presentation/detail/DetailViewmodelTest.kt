@@ -3,7 +3,6 @@ package com.example.cat.ui.presentation.detail
 import androidx.lifecycle.SavedStateHandle
 import com.example.cat.domain.model.Cat
 import com.example.cat.domain.usecase.UseCase
-import com.example.cat.ui.presentation.home.HomeContract
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
