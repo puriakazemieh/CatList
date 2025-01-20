@@ -76,7 +76,8 @@ fun DetailScreen(
                                        Icon(
                                            if (state.cat.isCatFav == true)
                                                Icons.Default.Favorite
-                                           else Icons.Default.FavoriteBorder, null,
+                                           else Icons.Default.FavoriteBorder,
+                                           contentDescription= "Favorite Icon",
                                            modifier = Modifier
                                                .clickable(
                                                    indication = null,
