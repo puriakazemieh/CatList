@@ -20,6 +20,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
@@ -162,6 +163,52 @@ class CatRepositoryImplTest {
         }
     }
 
+    @Test
+    fun `getCatDetail should return Flow of Cat when API and database calls are successful`() = runTest {
+        // Arrange
+        val catDto = CatDto(id = "1", url = "url1", width = 200, height = 200)
+        val catEntity = CatEntity(id = "1", isFav = true)
+        val expectedCat = Cat(id = "1", imageUrl = "url1", width = 200, height = 200, isCatFav = true)
+
+        coEvery { mockApiService.getCatDetail("1") } returns catDto
+        coEvery { mockCatDao.getFavCat("1") } returns catEntity
+
+        // Act
+        val result = repository.getCatDetail("1").toList()
+
+        // Assert
+        assertEquals(1, result.size)
+        assertEquals(expectedCat, result[0])
+    }
+
+    @Test
+    fun `getCatDetail should throw exception when API call fails`() = runTest {
+        // Arrange
+        val exception = Exception("API call failed")
+        coEvery { mockApiService.getCatDetail("1") } throws exception
+
+        // Act & Assert
+        assertThrows(Exception::class.java) {
+            runTest {
+                repository.getCatDetail("1").toList()
+            }
+        }
+    }
+
+    @Test
+    fun `getCatDetail should handle null isFav from database`() = runTest {
+        // Arrange
+        val catDto = CatDto(id = "1", url = "url1", width = 200, height = 200)
+        coEvery { mockApiService.getCatDetail("1") } returns catDto
+        coEvery { mockCatDao.getFavCat("1") } returns null
+
+        // Act
+        val result = repository.getCatDetail("1").toList()
+
+        // Assert
+        assertEquals(1, result.size)
+        assertEquals(false, result[0].isCatFav)
+    }
 
 }
 
