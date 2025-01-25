@@ -24,6 +24,14 @@ android {
             )
         }
     }
+    testOptions {
+        unitTests.all {
+            it.useJUnitPlatform()
+        }
+        unitTests {
+            isIncludeAndroidResources= true
+        }
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -34,6 +42,9 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":core"))
+    implementation(project(":domain"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -49,7 +60,7 @@ dependencies {
     implementation(libs.logging.interceptor)
 
     // Koin
-    implementation (libs.koin.android)
+    implementation(libs.koin.android)
 
     // Paging 3
     implementation(libs.androidx.paging.runtime)
@@ -61,7 +72,16 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
 
-
-    implementation(project(":core"))
-    implementation(project(":domain"))
+    // Test
+    // Test coroutines
+    testImplementation(libs.kotlinx.coroutines.test)
+    // Test junit 5
+    testImplementation(libs.junit.jupiter.engine)
+    testImplementation(libs.junit.jupiter.api)
+    testImplementation(libs.junit.jupiter.params)
+    // Test Mocking
+    testImplementation(libs.mockk)
+    testImplementation(libs.mockwebserver)
+    // Koin Test
+    testImplementation(libs.koin.test)
 }

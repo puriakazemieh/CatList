@@ -2,7 +2,6 @@ package com.example.cat
 
 import android.app.Application
 import com.example.cat.data.di.dataModule
-import com.example.cat.di.appModule
 import com.example.cat.domain.di.domainModule
 import com.example.cat.feature_detail.di.featureDetailModule
 import com.example.cat.feature_home.di.featureHomeModule

@@ -67,44 +67,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    //compose
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.androidx.lifecycle.viewmodel.compose.android)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.navigation.compose)
-
-    // network
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
-    implementation(libs.gson)
-    implementation(libs.logging.interceptor)
-
-    // Koin
-    implementation(libs.koin.android)
-    implementation(libs.koin.androidx.compose)
-
-    // Paging 3
-    implementation(libs.androidx.paging.runtime)
-    implementation(libs.androidx.paging.runtime.ktx)
-    implementation(libs.androidx.paging.compose)
-
-    // Coil
-    implementation(libs.coil.compose)
-    implementation(libs.coil)
-    implementation(libs.landscapist.coil3)
-    implementation(libs.landscapist.placeholder)
-
-    // database
-    implementation(libs.androidx.room.runtime)
-    annotationProcessor(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.ktx)
-    ksp(libs.androidx.room.compiler)
-
 
     // Test
     // Test coroutines

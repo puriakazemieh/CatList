@@ -5,13 +5,13 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
-import com.example.cat.data.local.db.CatDatabase
-import com.example.cat.data.local.db.dao.CatDao
-import com.example.cat.data.local.db.entity.CatEntity
+import com.example.cat.data.db.CatDatabase
+import com.example.cat.data.db.dao.CatDao
+import com.example.cat.data.db.entity.CatEntity
+import com.example.cat.data.mapper.toBreedsItem
 import com.example.cat.data.remote.ApiService
 import com.example.cat.data.remote.CatPagingSource
 import com.example.cat.data.remote.dto.CatDto
-import com.example.cat.domain.mapper.toBreedsItem
 import com.example.cat.domain.model.Cat
 import io.mockk.coEvery
 import io.mockk.every
