@@ -1,4 +1,4 @@
-package com.example.cat.ui.presentation.home
+package com.example.cat.ui.presentation.navigation
 
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithText
@@ -8,8 +8,10 @@ import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import com.example.cat.core.constant.ID_CAT
 import com.example.cat.ui.navigation.AppNavigation
-import com.example.cat.ui.presentation.detail.DetailNavigation
+import com.example.cat.ui.navigation.DetailNavigation
+import com.example.cat.ui.navigation.HomeNavigation
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -65,7 +67,7 @@ class HomeNavigationTest {
             .performClick()
 
         // Assert
-        val expectedRoute = DetailNavigation().routeWithArgs(DetailNavigation.ID_CAT to "abys")
+        val expectedRoute = DetailNavigation().routeWithArgs(ID_CAT to "abys")
         assertEquals("DetailNavigation?abys", expectedRoute)
     }
 

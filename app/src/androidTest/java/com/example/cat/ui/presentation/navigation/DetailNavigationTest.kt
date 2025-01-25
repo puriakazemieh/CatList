@@ -1,6 +1,7 @@
-package com.example.cat.ui.presentation.detail
+package com.example.cat.ui.presentation.navigation
 
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
