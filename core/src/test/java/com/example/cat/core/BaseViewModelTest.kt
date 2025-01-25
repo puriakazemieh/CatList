@@ -1,9 +1,9 @@
-package com.example.cat.ui.presentation
+package com.example.cat.core
 
-import com.example.cat.ui.presentation.base.BaseViewModel
-import com.example.cat.ui.presentation.base.UiEffect
-import com.example.cat.ui.presentation.base.UiEvent
-import com.example.cat.ui.presentation.base.UiState
+import com.example.cat.core.ui.presentration.base.BaseViewModel
+import com.example.cat.core.ui.presentration.base.UiEffect
+import com.example.cat.core.ui.presentration.base.UiEvent
+import com.example.cat.core.ui.presentration.base.UiState
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
@@ -49,6 +49,7 @@ class BaseViewModelTest {
         // Reset the Main dispatcher
         Dispatchers.resetMain()
     }
+
     @Test
     fun `test initial state`() = runTest(testDispatcher) {
         val initialState = baseViewModel.uiState.first()
@@ -78,7 +79,7 @@ class BaseViewModelTest {
 
 
     @Test
-    fun `test setEffect`()  = runTest(testDispatcher) {
+    fun `test setEffect`() = runTest(testDispatcher) {
         val effect = TestEffect.SomeEffect
         testViewModel.publicSetEffect { effect }
         val emittedEffect = testViewModel.effect.first()
@@ -109,6 +110,7 @@ class BaseViewModelTest {
         fun publicSetEffect(builder: () -> TestEffect) {
             setEffect(builder)
         }
+
         fun publicSetState(reduce: TestState.() -> TestState) {
             setState(reduce)
         }

@@ -34,6 +34,17 @@ android {
     buildFeatures {
         compose = true
     }
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
+    }
+    testOptions {
+        unitTests.all {
+            it.useJUnitPlatform()
+        }
+        unitTests {
+            isIncludeAndroidResources= true
+        }
+    }
 }
 
 dependencies {
@@ -54,4 +65,17 @@ dependencies {
     // Coil
     implementation(libs.landscapist.coil3)
     implementation(libs.landscapist.placeholder)
+
+    // Test
+    // Test coroutines
+    testImplementation(libs.kotlinx.coroutines.test)
+    // Test junit 5
+    testImplementation(libs.junit.jupiter.engine)
+    testImplementation(libs.junit.jupiter.api)
+    testImplementation(libs.junit.jupiter.params)
+    // Test Mocking
+    testImplementation(libs.mockk)
+    testImplementation(libs.mockwebserver)
+    // Koin Test
+    testImplementation(libs.koin.test)
 }
