@@ -28,10 +28,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.cat.ui.component.ProgressScreen
-import com.example.cat.ui.component.imageOption
-import com.example.cat.ui.component.shimmerPluginImage
-import com.example.cat.ui.presentation.home.HomeContract
+import com.example.cat.core.ui.component.ProgressScreen
+import com.example.cat.core.ui.component.imageOption
+import com.example.cat.core.ui.component.shimmerPluginImage
 import com.skydoves.landscapist.coil3.CoilImage
 import org.koin.androidx.compose.koinViewModel
 

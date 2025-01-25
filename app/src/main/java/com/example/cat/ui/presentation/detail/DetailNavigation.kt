@@ -4,7 +4,7 @@ package com.example.cat.ui.presentation.detail
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import com.example.cat.ui.navigation.INavigation
+import com.example.cat.core.ui.navigation.INavigation
 
 class DetailNavigation : INavigation {
 

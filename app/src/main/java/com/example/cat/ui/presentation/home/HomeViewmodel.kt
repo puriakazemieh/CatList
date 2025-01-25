@@ -7,9 +7,8 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.map
 import com.example.cat.domain.model.Cat
 import com.example.cat.domain.usecase.UseCase
-import com.example.cat.ui.presentation.base.BaseViewModel
+import com.example.cat.core.ui.presentration.base.BaseViewModel
 import com.example.cat.ui.presentation.home.HomeContract.Effect.*
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

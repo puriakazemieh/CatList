@@ -1,4 +1,4 @@
-package com.example.cat.ui.component
+package com.example.cat.core.ui.component
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color

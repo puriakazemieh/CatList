@@ -1,4 +1,8 @@
-package com.example.cat.ui.navigation
+package com.example.cat.core.ui.navigation
+
+import kotlin.collections.forEach
+import kotlin.text.replace
+import kotlin.toString
 
 interface INavigation {
     val route: String

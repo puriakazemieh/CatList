@@ -31,9 +31,9 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.example.cat.ui.component.ProgressScreen
-import com.example.cat.ui.component.imageOption
-import com.example.cat.ui.component.shimmerPluginImage
+import com.example.cat.core.ui.component.ProgressScreen
+import com.example.cat.core.ui.component.imageOption
+import com.example.cat.core.ui.component.shimmerPluginImage
 import com.skydoves.landscapist.coil3.CoilImage
 import org.koin.androidx.compose.koinViewModel
 

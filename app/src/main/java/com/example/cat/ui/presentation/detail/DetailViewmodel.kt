@@ -2,9 +2,8 @@ package com.example.cat.ui.presentation.detail
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import androidx.paging.map
 import com.example.cat.domain.usecase.UseCase
-import com.example.cat.ui.presentation.base.BaseViewModel
+import com.example.cat.core.ui.presentration.base.BaseViewModel
 import kotlinx.coroutines.launch
 
 class DetailViewmodel(

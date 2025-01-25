@@ -1,4 +1,4 @@
-package com.example.cat.ui.component
+package com.example.cat.core.ui.component
 
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.layout.ContentScale
