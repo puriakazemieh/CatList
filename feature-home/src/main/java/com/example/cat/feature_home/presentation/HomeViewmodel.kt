@@ -1,14 +1,14 @@
-package com.example.cat.ui.presentation.home
+package com.example.cat.feature_home.presentation
 
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.map
+import com.example.cat.core.ui.presentration.base.BaseViewModel
 import com.example.cat.domain.model.Cat
 import com.example.cat.domain.usecase.UseCase
-import com.example.cat.core.ui.presentration.base.BaseViewModel
-import com.example.cat.ui.presentation.home.HomeContract.Effect.*
+import com.example.cat.feature_home.presentation.HomeContract.Effect.GoToDetail
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -33,7 +33,7 @@ class HomeViewmodel(
             is HomeContract.Event.OnCollectCatList -> collectCatList(event.catList)
             HomeContract.Event.GetCats -> getCats()
             is HomeContract.Event.OnGoToDetail -> setEffect { GoToDetail(event.id) }
-           is HomeContract.Event.OnFavClicked -> onFavClicked(event.id)
+            is HomeContract.Event.OnFavClicked -> onFavClicked(event.id)
         }
     }
 
@@ -54,7 +54,7 @@ class HomeViewmodel(
 
     private fun onFavClicked(id: String) {
         viewModelScope.launch {
-            useCase.setFavUseCase(id).collect {isFav->
+            useCase.setFavUseCase(id).collect { isFav ->
                 _catResult.emit(
                     _catResult.value.map {
                         if (it.id == id)

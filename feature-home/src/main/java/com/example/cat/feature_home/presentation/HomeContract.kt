@@ -1,10 +1,10 @@
-package com.example.cat.ui.presentation.home
+package com.example.cat.feature_home.presentation
 
 import androidx.paging.compose.LazyPagingItems
-import com.example.cat.domain.model.Cat
 import com.example.cat.core.ui.presentration.base.UiEffect
 import com.example.cat.core.ui.presentration.base.UiEvent
 import com.example.cat.core.ui.presentration.base.UiState
+import com.example.cat.domain.model.Cat
 
 class HomeContract {
 

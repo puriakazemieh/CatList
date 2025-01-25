@@ -4,13 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Scaffold
-import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import com.example.cat.feature_home.presentation.HomeNavigation
 import com.example.cat.ui.navigation.AppNavigation
-import com.example.cat.ui.presentation.home.HomeNavigation
-import com.example.cat.ui.presentation.home.HomeScreen
 import com.example.cat.ui.theme.CatTheme
 
 class MainActivity : ComponentActivity() {

@@ -1,4 +1,4 @@
-package com.example.cat.ui.presentation.home
+package com.example.cat.feature_home.presentation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
