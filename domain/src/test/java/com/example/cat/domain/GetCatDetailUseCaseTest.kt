@@ -1,7 +1,7 @@
-package com.example.cat.domain.usecase
+package com.example.cat.domain
 
-import com.example.cat.domain.CatRepository
 import com.example.cat.domain.model.Cat
+import com.example.cat.domain.usecase.GetCatDetailUseCase
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.flow.flowOf

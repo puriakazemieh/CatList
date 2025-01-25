@@ -1,10 +1,10 @@
-package com.example.cat.domain.usecase
+package com.example.cat.domain
 
 import android.annotation.SuppressLint
 import androidx.paging.PagingData
 import androidx.paging.map
-import com.example.cat.domain.CatRepository
 import com.example.cat.domain.model.Cat
+import com.example.cat.domain.usecase.GetCatsUseCase
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.flow.Flow
@@ -14,6 +14,8 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertThrows
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import kotlin.collections.forEachIndexed
+import kotlin.jvm.java
 
 class GetCatsUseCaseTest {
 

@@ -1,6 +1,6 @@
-package com.example.cat.domain.usecase
+package com.example.cat.domain
 
-import com.example.cat.domain.CatRepository
+import com.example.cat.domain.usecase.SetFavUseCase
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.flow.first
