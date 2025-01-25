@@ -1,4 +1,4 @@
-package com.example.cat.ui.presentation.detail
+package com.example.cat.feature_detail.presentation
 
 
 import androidx.navigation.NavGraphBuilder

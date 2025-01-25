@@ -1,4 +1,4 @@
-package com.example.cat.ui.presentation.detail
+package com.example.cat.feature_detail.presentation
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope

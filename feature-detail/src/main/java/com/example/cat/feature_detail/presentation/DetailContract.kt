@@ -1,4 +1,4 @@
-package com.example.cat.ui.presentation.detail
+package com.example.cat.feature_detail.presentation
 
 import com.example.cat.domain.model.Cat
 import com.example.cat.core.ui.presentration.base.UiEffect
