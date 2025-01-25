@@ -6,10 +6,11 @@ import androidx.paging.PagingData
 import androidx.paging.map
 import com.example.cat.data.db.CatDatabase
 import com.example.cat.data.db.entity.CatEntity
+import com.example.cat.data.mapper.toCat
 import com.example.cat.data.remote.ApiService
 import com.example.cat.data.remote.CatPagingSource
-import com.example.cat.data.remote.dto.CatDto
-import com.example.cat.domain.mapper.toCat
+import com.example.cat.domain.CatRepository
+import com.example.cat.domain.model.Cat
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map

@@ -1,6 +1,5 @@
 package com.example.cat.domain.model
 
-
 data class BreedsItem(
     val suppressedTail: Int? = null,
     val wikipediaUrl: String? = null,

@@ -2,12 +2,16 @@ package com.example.cat.data.di
 
 import androidx.room.Room
 import com.example.cat.core.constant.BASE_URL
+import com.example.cat.data.CatRepositoryImp
 import com.example.cat.data.db.CatDatabase
 import com.example.cat.data.db.dao.CatDao
 import com.example.cat.data.remote.interceptor.RequestInterceptor
+import com.example.cat.domain.CatRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
+import org.koin.core.module.dsl.bind
+import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -28,6 +32,7 @@ val dataModule = module {
     single { provideOkHttpClient(get()) }
     single { provideRetrofit(get()) }
     single { provideApiService(get()) }
+    singleOf(::CatRepositoryImp) { bind<CatRepository>() }
 
 }
 

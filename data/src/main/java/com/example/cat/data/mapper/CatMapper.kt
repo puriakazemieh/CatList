@@ -1,4 +1,4 @@
-package com.example.cat.domain.mapper
+package com.example.cat.data.mapper
 
 import com.example.cat.data.remote.dto.BreedsItemDto
 import com.example.cat.data.remote.dto.CatDto
