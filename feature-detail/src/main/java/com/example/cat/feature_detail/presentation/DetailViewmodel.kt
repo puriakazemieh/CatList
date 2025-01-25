@@ -2,6 +2,7 @@ package com.example.cat.feature_detail.presentation
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.example.cat.core.constant.ID_CAT
 import com.example.cat.domain.usecase.UseCase
 import com.example.cat.core.ui.presentration.base.BaseViewModel
 import kotlinx.coroutines.launch
@@ -12,7 +13,7 @@ class DetailViewmodel(
 ) :
     BaseViewModel<DetailContract.Event, DetailContract.State, DetailContract.Effect>() {
 
-    val idCat = savedStateHandle.get<String>(DetailNavigation.ID_CAT) ?: ""
+    val idCat = savedStateHandle.get<String>(ID_CAT) ?: ""
 
     init {
         getCatDetail(idCat)

@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.navigation.compose.rememberNavController
-import com.example.cat.feature_home.presentation.HomeNavigation
+import com.example.cat.ui.navigation.HomeNavigation
 import com.example.cat.ui.navigation.AppNavigation
 import com.example.cat.ui.theme.CatTheme
 

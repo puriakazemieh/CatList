@@ -3,9 +3,6 @@ package com.example.cat.ui.navigation
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.example.cat.feature_home.presentation.HomeNavigation
-import com.example.cat.feature_detail.presentation.detailScreen
-import com.example.cat.feature_home.presentation.homeScreen
 
 
 @Composable
