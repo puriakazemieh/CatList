@@ -41,6 +41,17 @@ android {
     packagingOptions {
         resources.excludes.add("META-INF/*")
     }
+    testOptions {
+        unitTests.all {
+            it.useJUnitPlatform()
+        }
+        unitTests {
+            isIncludeAndroidResources= true
+        }
+    }
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
+    }
 }
 
 dependencies {
@@ -53,11 +64,6 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
@@ -98,5 +104,28 @@ dependencies {
     annotationProcessor(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
+
+
+    // Test
+    // Test coroutines
+    testImplementation(libs.kotlinx.coroutines.test)
+    // Test junit 5
+    testImplementation(libs.junit.jupiter.engine)
+    testImplementation(libs.junit.jupiter.api)
+    testImplementation(libs.junit.jupiter.params)
+    // Test Mocking
+    testImplementation(libs.mockk)
+    testImplementation(libs.mockwebserver)
+    androidTestImplementation(libs.mockk.android)
+    // Test ui
+    androidTestImplementation(libs.androidx.ui.test.junit4.v151)
+    debugImplementation(libs.ui.test.manifest)
+    androidTestImplementation(libs.androidx.navigation.testing)
+    androidTestImplementation (libs.junit)
+    androidTestImplementation (libs.androidx.junit)
+    androidTestImplementation (libs.androidx.espresso.core)
+    // Koin Test
+    testImplementation (libs.koin.test)
+
 
 }
