@@ -1,7 +1,11 @@
 package com.example.cat.di
 
 import androidx.lifecycle.SavedStateHandle
-import com.example.cat.ui.presentation.detail.DetailNavigation
+import com.example.cat.core.constant.ID_CAT
+import com.example.cat.data.di.dataModule
+import com.example.cat.domain.di.domainModule
+import com.example.cat.feature_detail.di.featureDetailModule
+import com.example.cat.feature_home.di.featureHomeModule
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
@@ -39,13 +43,13 @@ class KoinModuleTest : KoinTest {
     fun `check koin modules`() = runTest(testDispatcher) {
         val mockContext = mockk<android.content.Context>(relaxed = true)
         val mockSavedStateHandle = mockk<SavedStateHandle>(relaxed = true)
-        every { mockSavedStateHandle.get<String>(DetailNavigation.ID_CAT) } returns "123"
+        every { mockSavedStateHandle.get<String>(ID_CAT) } returns "123"
         checkModules {
             modules(
                 module {
                     single { mockContext }
                     single { mockSavedStateHandle }
-                } + appModule
+                } + dataModule + domainModule + featureHomeModule + featureDetailModule
             )
         }
     }
