@@ -117,7 +117,8 @@ dependencies {
     androidTestImplementation (libs.junit)
     androidTestImplementation (libs.androidx.junit)
     androidTestImplementation (libs.androidx.espresso.core)
-
+    // Koin Test
+    testImplementation (libs.koin.test)
 
 
 }

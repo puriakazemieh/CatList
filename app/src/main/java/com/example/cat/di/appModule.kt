@@ -1,6 +1,5 @@
 package com.example.cat.di
 
-import android.content.Context
 import androidx.room.Room
 import com.example.cat.data.CatRepositoryImp
 import com.example.cat.data.local.db.CatDatabase
@@ -16,7 +15,6 @@ import com.example.cat.ui.presentation.detail.DetailViewmodel
 import com.example.cat.ui.presentation.home.HomeViewmodel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.dsl.bind
