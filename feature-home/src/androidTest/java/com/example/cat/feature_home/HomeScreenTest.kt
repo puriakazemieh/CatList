@@ -1,4 +1,4 @@
-package com.example.cat.ui.presentation.home
+package com.example.cat.feature_home
 
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithContentDescription
@@ -9,6 +9,9 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import com.example.cat.domain.model.BreedsItem
 import com.example.cat.domain.model.Cat
+import com.example.cat.feature_home.presentation.HomeContract
+import com.example.cat.feature_home.presentation.HomeScreen
+import com.example.cat.feature_home.presentation.HomeViewmodel
 import io.mockk.coEvery
 import io.mockk.mockk
 import io.mockk.verify

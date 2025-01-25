@@ -1,4 +1,4 @@
-package com.example.cat.ui.presentation.home
+package com.example.cat.feature_home
 
 import android.annotation.SuppressLint
 import androidx.paging.PagingData
@@ -6,6 +6,8 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.map
 import com.example.cat.domain.model.Cat
 import com.example.cat.domain.usecase.UseCase
+import com.example.cat.feature_home.presentation.HomeContract
+import com.example.cat.feature_home.presentation.HomeViewmodel
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
