@@ -1,4 +1,4 @@
-package com.example.cat.ui.presentation.detail
+package com.example.cat.feature_detail
 
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithText
@@ -7,6 +7,9 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.performClick
 import com.example.cat.domain.model.BreedsItem
 import com.example.cat.domain.model.Cat
+import com.example.cat.feature_detail.presentation.DetailContract
+import com.example.cat.feature_detail.presentation.DetailScreen
+import com.example.cat.feature_detail.presentation.DetailViewmodel
 import io.mockk.coEvery
 import io.mockk.mockk
 import io.mockk.verify

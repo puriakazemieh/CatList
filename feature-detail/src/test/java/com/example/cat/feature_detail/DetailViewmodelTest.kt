@@ -1,8 +1,11 @@
-package com.example.cat.ui.presentation.detail
+package com.example.cat.feature_detail
 
 import androidx.lifecycle.SavedStateHandle
+import com.example.cat.core.constant.ID_CAT
 import com.example.cat.domain.model.Cat
 import com.example.cat.domain.usecase.UseCase
+import com.example.cat.feature_detail.presentation.DetailContract
+import com.example.cat.feature_detail.presentation.DetailViewmodel
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
@@ -31,7 +34,7 @@ class DetailViewmodelTest {
     @BeforeEach
     fun setup() {
         Dispatchers.setMain(testDispatcher)
-        every { savedStateHandle.get<String>(DetailNavigation.ID_CAT) } returns "1"
+        every { savedStateHandle.get<String>(ID_CAT) } returns "1"
         coEvery { useCase.getCatDetailUseCase("1") } returns flowOf(testCat)
         viewModel = DetailViewmodel(savedStateHandle, useCase)
     }

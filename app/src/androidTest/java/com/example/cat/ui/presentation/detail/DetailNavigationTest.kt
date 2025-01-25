@@ -1,10 +1,10 @@
 package com.example.cat.ui.presentation.detail
 
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import com.example.cat.ui.navigation.DetailNavigation
 import junit.framework.TestCase.assertEquals
 import org.junit.Before
 import org.junit.Rule
